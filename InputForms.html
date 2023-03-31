@@ -30,7 +30,8 @@
             </div>
             <div>
                 <label for="number">Number:</label>
-                <input type="number" name="number" id="number">
+                <input type="number" name="number" id="number" >
+                <error-output class="number-error" for="number"></error-output>
             </div>
             <div>
                 <label for="search">Search:</label>
@@ -72,6 +73,18 @@
                     emailError.textContent = "Email is incorrect!";
                 }
             });
+
+            const number= document.querySelector('#number');
+            const numberError = document.querySelector('.number-error');
+            number.addEventListener('input', function()
+            {
+                let numberRegex=RegExp('^[1-9]{2}[ ]?[6789]{1}[0-9]{9}$');
+                if(numberRegex.test(number.value))
+                numberError.textContent="";
+                else
+                numberError.textContent="Number is incorrect!";
+            }
+            );
 
             const salary = document.querySelector('#salary');
             const output = document.querySelector('.salary-output');
